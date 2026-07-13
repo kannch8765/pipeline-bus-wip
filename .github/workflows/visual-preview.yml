@@ -1,0 +1,73 @@
+name: Visual preview
+
+on:
+  push:
+    branches:
+      - feature/task-visualizer-ui
+    paths:
+      - "frontend/**"
+      - ".github/workflows/visual-preview.yml"
+  pull_request:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/visual-preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate source
+        run: |
+          node --check frontend/app.js
+          node --check frontend/gif-bus-runtime.js
+          python3 -m py_compile frontend/capture-preview.py
+          test -s frontend/assets/pipeline-bus-clawd-boarding.gif
+          test -s frontend/assets/pipeline-bus-parked.png
+
+      - name: Install multilingual fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+
+      - name: Show browser version
+        run: google-chrome --version
+
+      - name: Capture deterministic viewports
+        run: |
+          mkdir -p visual-artifacts
+          # Headless Chrome is detected by the GIF runtime, so visual QA captures
+          # the stable parked poster while normal browsers play the original GIF.
+          python3 frontend/capture-preview.py \
+            --width 1600 --height 1300 --wait-ms 500 \
+            --data ./data/visual-qa.json \
+            --output visual-artifacts/pipeline-bus-desktop-1600.png
+          python3 frontend/capture-preview.py \
+            --width 1280 --height 1100 --wait-ms 500 \
+            --data ./data/visual-qa.json \
+            --output visual-artifacts/pipeline-bus-laptop-1280.png
+          python3 frontend/capture-preview.py \
+            --width 390 --height 844 --wait-ms 500 \
+            --data ./data/visual-qa.json \
+            --output visual-artifacts/pipeline-bus-mobile-fold-390.png
+          python3 frontend/capture-preview.py \
+            --width 390 --height 1800 --wait-ms 500 \
+            --data ./data/visual-qa.json \
+            --output visual-artifacts/pipeline-bus-mobile-tall-390.png
+
+      - name: Upload visual preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-bus-visual-preview
+          path: visual-artifacts/*.png
+          if-no-files-found: error
+          retention-days: 14

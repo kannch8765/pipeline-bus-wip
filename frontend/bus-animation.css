@@ -1,0 +1,37 @@
+/* The public preview uses the original hand-drawn 70-frame GIF. The parked
+   poster is loaded first so screenshots and reduced-motion users see a stable
+   complete bus instead of a transparent transition frame. */
+.dispatch-stage {
+  background-image: none;
+}
+
+.dispatch-stage::after {
+  display: none;
+}
+
+.dispatch-stage canvas {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dispatch-bus-media {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: -48px;
+  width: 336px;
+  height: 224px;
+  max-width: none;
+  transform: translateX(-50%);
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+@media (max-width: 560px) {
+  .dispatch-bus-media {
+    top: -38px;
+    width: 288px;
+    height: 192px;
+  }
+}

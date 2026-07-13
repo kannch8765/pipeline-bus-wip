@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {"task":"022","title":"Build task visualizer shell","state":"queued","round":0,"queue_to_claim":420,"end_to_end_open":true,"updated":"2026-07-13T10:42:00+09:00"},
+    {"task":"021","title":"Add a second web-capable worker agent","state":"doing","round":1,"queue_to_claim":180,"impl_seconds":736,"end_to_end_open":true,"updated":"2026-07-13T10:31:00+09:00"},
+    {"task":"020","title":"Harden reviewer verdict parser for malformed responses","state":"review","round":1,"queue_to_claim":240,"impl_seconds":502,"review_seconds":287,"end_to_end_open":true,"updated":"2026-07-13T10:18:00+09:00"},
+    {"task":"019","title":"Export analytics as stable JSON","state":"approved","round":1,"queue_to_claim":120,"impl_seconds":612,"review_seconds":392,"final_seconds":170,"end_to_end_open":true,"updated":"2026-07-13T09:55:00+09:00"},
+    {"task":"018","title":"Resume task branch after review","state":"changes_requested","round":2,"queue_to_claim":310,"impl_seconds":1128,"review_seconds":854,"end_to_end":4512,"end_to_end_open":true,"updated":"2026-07-13T09:47:00+09:00"},
+    {"task":"017","title":"Recover reviewer from parse failure","state":"stuck","round":2,"queue_to_claim":480,"impl_seconds":1480,"review_seconds":1310,"end_to_end":7200,"end_to_end_open":true,"updated":"2026-07-13T09:25:00+09:00"},
+    {"task":"016","title":"Document token attribution caveats","state":"merged","round":1,"queue_to_claim":88,"impl_seconds":473,"review_seconds":318,"final_seconds":92,"end_to_end":1110,"updated":"2026-07-13T09:10:00+09:00"},
+    {"task":"015","title":"Add multilingual task title support 日本語と中文","state":"merged","round":1,"queue_to_claim":142,"impl_seconds":620,"review_seconds":244,"final_seconds":84,"end_to_end":1250,"updated":"2026-07-13T08:48:00+09:00"},
+    {"task":"014","title":"Keep polling safe across concurrent pushes","state":"merged","round":2,"queue_to_claim":210,"impl_seconds":940,"review_seconds":502,"final_seconds":130,"end_to_end":2280,"updated":"2026-07-13T08:26:00+09:00"},
+    {"task":"013","title":"Add owner gate and final merge marker","state":"merged","round":1,"queue_to_claim":96,"impl_seconds":510,"review_seconds":260,"final_seconds":74,"end_to_end":1080,"updated":"2026-07-13T08:02:00+09:00"},
+    {"task":"012","title":"Make status updates atomic","state":"merged","round":1,"queue_to_claim":170,"impl_seconds":680,"review_seconds":330,"final_seconds":99,"end_to_end":1510,"updated":"2026-07-13T07:44:00+09:00"},
+    {"task":"011","title":"Introduce reviewer round limits","state":"merged","round":2,"queue_to_claim":360,"impl_seconds":1180,"review_seconds":700,"final_seconds":210,"end_to_end":3100,"updated":"2026-07-13T07:21:00+09:00"},
+    {"task":"010","title":"Add read-only analytics command","state":"merged","round":1,"queue_to_claim":110,"impl_seconds":545,"review_seconds":280,"final_seconds":80,"end_to_end":1180,"updated":"2026-07-13T06:59:00+09:00"},
+    {"task":"009","title":"Split operational pitfalls into dedicated documentation","state":"merged","round":1,"queue_to_claim":155,"impl_seconds":760,"review_seconds":305,"final_seconds":95,"end_to_end":1420,"updated":"2026-07-13T06:30:00+09:00"},
+    {"task":"008","title":"Make long-running pollers reload safely","state":"merged","round":2,"queue_to_claim":275,"impl_seconds":1320,"review_seconds":640,"final_seconds":180,"end_to_end":2940,"updated":"2026-07-13T06:02:00+09:00"},
+    {"task":"007","title":"Add notification hook template","state":"merged","round":1,"queue_to_claim":75,"impl_seconds":430,"review_seconds":190,"final_seconds":55,"end_to_end":880,"updated":"2026-07-13T05:38:00+09:00"},
+    {"task":"006","title":"Protect worker branch history during rework","state":"merged","round":2,"queue_to_claim":330,"impl_seconds":1540,"review_seconds":820,"final_seconds":240,"end_to_end":3480,"updated":"2026-07-13T05:04:00+09:00"},
+    {"task":"005","title":"Create the first pure-git delivery route","state":"merged","round":1,"queue_to_claim":205,"impl_seconds":960,"review_seconds":410,"final_seconds":120,"end_to_end":2010,"updated":"2026-07-13T04:31:00+09:00"}
+  ],
+  "summary": {
+    "n_tasks": 18,
+    "n_inflight": 6,
+    "n_merged": 12,
+    "n_rework": 6,
+    "throughput_per_day": 4.2,
+    "avg_e2e": 1935,
+    "rework_rate": 0.333,
+    "sum_in": 381240,
+    "sum_out": 29380,
+    "sum_cr": 181200,
+    "sum_sessions": 18
+  },
+  "crew": [
+    {"initials":"OW","role":"Owner / Dispatcher","model":"final gate","status":"waiting","label":"waiting"},
+    {"initials":"M3","role":"Implementer","model":"worker agent","status":"online","label":"working"},
+    {"initials":"RV","role":"Reviewer","model":"review agent","status":"online","label":"reviewing"},
+    {"initials":"HQ","role":"Owner gate","model":"human review","status":"waiting","label":"ready"}
+  ],
+  "activity": [
+    {"time":"10:42","task":"020","text":"Reviewer opened round 1"},
+    {"time":"10:31","task":"021","text":"Implementation branch updated"},
+    {"time":"10:18","task":"020","text":"Implementation submitted for review"},
+    {"time":"10:02","task":"021","text":"Claimed by implementer"},
+    {"time":"09:55","task":"019","text":"Verdict: APPROVED"},
+    {"time":"09:47","task":"018","text":"Changes requested; returning to implementation"},
+    {"time":"09:25","task":"017","text":"Moved to stranded bay after round limit"},
+    {"time":"09:10","task":"016","text":"Route completed · merged"},
+    {"time":"08:48","task":"015","text":"Route completed · merged"},
+    {"time":"08:26","task":"014","text":"Route completed · merged"},
+    {"time":"08:02","task":"013","text":"Route completed · merged"},
+    {"time":"07:44","task":"012","text":"Route completed · merged"}
+  ]
+}
